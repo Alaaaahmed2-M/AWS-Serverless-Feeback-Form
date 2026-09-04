@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">💬 Feedback Hub</div>
+      <p class="tagline">We'd love to hear from you</p>
+    </header>
+
+    <!-- Form Card -->
+    <main class="card">
+      <h2>Send us a Message</h2>
+      <p class="subtitle">Fill in the form below and we'll get back to you shortly.</p>
+
+      <form id="feedbackForm">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input type="text" id="name" placeholder="Ahmed Mohamed" required />
+          </div>
+          <div class="field">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="ahmed@example.com" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="subject">Course <span class="req">*</span></label>
+          <input type="text" id="subject" placeholder="How can we help?" required />
+        </div>
+
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="general">General Inquiry</option>
+            <option value="support">Technical Support</option>
+            <option value="billing">Billing</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message <span class="req">*</span></label>
+          <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn">
+          <span id="btnText">Send Message ✉️</span>
+          <span id="btnLoader" class="loader" style="display:none;"></span>
+        </button>
+
+      </form>
+
+      <!-- Result Messages -->
+      <div id="successMsg" class="alert success" style="display:none;">
+        ✅ <strong>Message sent successfully!</strong><br>
+        Thank you for reaching out. We'll get back to you within 24 hours.
+      </div>
+      <div id="errorMsg" class="alert error" style="display:none;"></div>
+    </main>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="stat">
+        <div class="stat-number" id="totalCount">—</div>
+        <div class="stat-label">Messages Received</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Average Response Time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Serverless on AWS</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Built with ☁️ <b> @Ahmed Gamal Yousef <b> - DevOps & Cloud Engineer
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
