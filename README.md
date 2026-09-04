@@ -1,6 +1,24 @@
 # AWS Serverless Feedback Form
 
-A fully serverless feedback form built on AWS. Users submit feedback through a modern web form; the request is processed by Lambda, stored in DynamoDB, and triggers an email notification via SNS — all served through CloudFront for fast, secure global delivery.
+AWS Serverless Feedback & Contact Form is a cloud-native, fully serverless application for collecting and managing user feedback. It uses `Amazon S3` and `CloudFront` for secure frontend delivery, `API Gateway` and `Lambda` for backend processing, and `DynamoDB` and `SNS` for data storage and real-time email notifications — with no traditional servers or EC2.
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Architecture](#️-architecture)
+- [AWS Services](#️-aws-services-used)
+- [Project Structure](#-project-structure)
+- [Deployment Steps](#-deployment-steps)
+- [Testing](#-testing)
+- [Troubleshooting](#-troubleshooting)
+- [Cost Estimate](#-cost-estimate)
+- [Cleanup](#-cleanup)
+- [Future Improvements](#-future-improvements)
+- [License](#-license)
+
+## 🎯 Overview
+
+**FeedbackHub** is a production-ready serverless contact form built entirely on AWS. Every submission is validated, saved to DynamoDB, and triggers an instant email notification via SNS — all while the frontend is delivered globally through CloudFront with zero server management.
 
 ## 🏗️ Architecture
 
@@ -46,10 +64,11 @@ AWS-Serverless-Feeback-Form/
 ├── lambda/
 │   └── index.js            # feedback-handler Lambda code
 ├── template.yaml            # Infrastructure as Code (SAM/CloudFormation)
+├── LICENSE
 └── README.md
 ```
 
-## 🚀 Getting Started
+## 🚀 Deployment Steps
 
 ### Prerequisites
 - An AWS account
@@ -79,9 +98,9 @@ aws s3 sync . s3://your-bucket-name --acl public-read --exclude "lambda/*" --exc
 ```
 Create a CloudFront distribution pointing to the S3 bucket for HTTPS delivery.
 
-## 🧪 API Example
+## 🧪 Testing
 
-**Request**
+**Sample API Request**
 ```json
 {
   "httpMethod": "POST",
@@ -90,7 +109,7 @@ Create a CloudFront distribution pointing to the S3 bucket for HTTPS delivery.
 }
 ```
 
-**Response**
+**Expected Response**
 ```json
 {
   "statusCode": 200,
@@ -98,7 +117,7 @@ Create a CloudFront distribution pointing to the S3 bucket for HTTPS delivery.
 }
 ```
 
-## ✅ Test the Full Flow
+**Full Flow Checklist**
 
 | Action | Expected Result |
 |---|---|
@@ -108,6 +127,16 @@ Create a CloudFront distribution pointing to the S3 bucket for HTTPS delivery.
 | Check your email | Notification email received |
 | Open DynamoDB → Explore items | Message saved in table |
 | Message counter | Updates to reflect new total |
+
+## 🛠️ Troubleshooting
+
+| Issue | Possible Cause | Fix |
+|---|---|---|
+| Form submits but no email received | SNS subscription not confirmed | Check inbox/spam for the confirmation email and confirm it |
+| `403 Forbidden` on form submit | CORS not enabled on API Gateway | Enable CORS on the `/feedback` resource and redeploy the API |
+| `500 Internal Server Error` | Lambda missing IAM permissions | Verify `feedback-lambda-role` has DynamoDB and SNS access |
+| Page not loading via CloudFront | Distribution still deploying | Wait a few minutes; CloudFront deployments take 5–15 min |
+| Old content still showing | CloudFront cache | Create a cache invalidation (`/*`) in the CloudFront console |
 
 ## 💰 Cost Estimate
 
