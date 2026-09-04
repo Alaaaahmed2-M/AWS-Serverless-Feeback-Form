@@ -1,4 +1,9 @@
-# AWS Serverless Feedback Form
+💬 AWS Serverless Feedback & Contact Form
+==========================================
+
+![AWS](https://img.shields.io/badge/AWS-FREE_TIER-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white&labelColor=232F3E&color=FF9900)
+![Python](https://img.shields.io/badge/PYTHON-3.12-232F3E?style=for-the-badge&logo=python&logoColor=white&labelColor=232F3E&color=3776AB)
+![Serverless](https://img.shields.io/badge/SERVERLESS-100%25-232F3E?style=for-the-badge&labelColor=232F3E&color=232F3E)
 
 AWS Serverless Feedback & Contact Form is a cloud-native, fully serverless application for collecting and managing user feedback. It uses `Amazon S3` and `CloudFront` for secure frontend delivery, `API Gateway` and `Lambda` for backend processing, and `DynamoDB` and `SNS` for data storage and real-time email notifications — with no traditional servers or EC2.
 
@@ -23,6 +28,10 @@ AWS Serverless Feedback & Contact Form is a cloud-native, fully serverless appli
 ## 🏗️ Architecture
 
 ![AWS Serverless Feedback Form - Architecture Diagram](./Screenshot/Arch.png)
+
+### 🖼️ Homepage Preview
+
+![Homepage - Empty Form](./Screenshot/homepage-form-empty.png)
 
 The application follows a fully serverless request flow:
 
